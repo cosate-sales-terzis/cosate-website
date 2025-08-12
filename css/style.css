@@ -1,0 +1,185 @@
+/* --- Global Variables & Basic Reset --- */
+:root {
+  --primary-color: #2c3e50; /* Dark Blue/Grey */
+  --secondary-color: #3498db; /* Blue */
+  --text-color: #333;
+  --background-color: #f4f4f4;
+  --white-color: #ffffff;
+  --font-family: "Arial", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- Header & Navigation --- */
+header {
+  background: var(--white-color);
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo img {
+  height: 50px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+}
+
+header nav ul li {
+  margin-left: 25px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.language-switcher button {
+  border: 1px solid var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
+  padding: 5px 10px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* --- Hero Section --- */
+.hero {
+  background: var(--primary-color); /* Fallback color */
+  /* We will add a background image later */
+  color: var(--white-color);
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* --- Featured Properties Section --- */
+.featured-properties {
+  padding: 4rem 0;
+  background: var(--background-color);
+}
+
+.featured-properties h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.properties-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* --- Footer --- */
+footer {
+  background: var(--primary-color);
+  color: var(--white-color);
+  text-align: center;
+  padding: 2rem 0;
+}
+
+footer a {
+  color: var(--white-color);
+}
+
+/* --- Property Card Styles --- */
+.property-card {
+    background: var(--white-color);
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.property-card__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.property-card__details {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.property-card__type {
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.property-card__title {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.property-card__info {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.property-card__button {
+    display: inline-block;
+    background: var(--secondary-color);
+    color: var(--white-color);
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: auto; /* Pushes button to the bottom */
+    transition: background-color 0.3s ease;
+}
+
+.property-card__button:hover {
+    background: #2980b9;
+}

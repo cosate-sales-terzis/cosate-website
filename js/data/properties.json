@@ -1,0 +1,18 @@
+[
+    {
+        "id": "A2",
+        "type_key": "type_apartment",
+        "image": "assets/images/placeholder-apartment.jpg",
+        "title_key": "title_A2",
+        "area": 65.39,
+        "bedrooms": 2
+    },
+    {
+        "id": "M1",
+        "type_key": "type_maisonette",
+        "image": "assets/images/placeholder-maisonette.jpg",
+        "title_key": "title_M1",
+        "area": 120,
+        "bedrooms": 3
+    }
+]
