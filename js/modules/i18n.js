@@ -37,10 +37,7 @@ function updateLanguageSwitcher(lang) {
     if (currentLangText) currentLangText.textContent = lang.toUpperCase();
 }
 
-// **Η ΔΙΟΡΘΩΣΗ ΕΙΝΑΙ ΕΔΩ:** Η συνάρτηση έγινε "async" και περιμένει (await)
-// την αρχική φόρτωση της γλώσσας πριν συνεχίσει.
 export async function initLanguageSwitcher() {
-    // This function will be called after partials are loaded, so the switcher exists.
     const switcher = document.querySelector('.language-switcher');
     if (!switcher) return;
 
@@ -54,10 +51,7 @@ export async function initLanguageSwitcher() {
             e.preventDefault();
             const selectedLang = link.getAttribute('data-lang');
             await setLanguage(selectedLang);
-            
-            // Dispatch a custom event to notify that the language has changed
             document.dispatchEvent(new CustomEvent('languageChange'));
-
             switcher.classList.remove('is-open');
         });
     });
@@ -69,7 +63,7 @@ export async function initLanguageSwitcher() {
     });
 
     const preferredLanguage = localStorage.getItem('preferredLanguage') || 'el';
-    await setLanguage(preferredLanguage); // Wait for the initial language to be set
+    await setLanguage(preferredLanguage);
 }
 
 export function getCurrentTranslations() {

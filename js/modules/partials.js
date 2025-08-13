@@ -39,6 +39,28 @@ function createPropertyCard(prop) {
     `;
 }
 
+export async function loadPartials() {
+    const partials = [
+        { id: 'header-placeholder', url: 'partials/header.html' },
+        { id: 'footer-placeholder', url: 'partials/footer.html' }
+    ];
+
+    for (const part of partials) {
+        const element = document.getElementById(part.id);
+        if (element) {
+            try {
+                const response = await fetch(part.url);
+                if (!response.ok) throw new Error(`Failed to load ${part.url}`);
+                const content = await response.text();
+                element.outerHTML = content;
+            } catch (error) {
+                console.error(`Error loading partial:`, error);
+                element.innerHTML = `<p style="color:red;">Could not load ${part.id}</p>`;
+            }
+        }
+    }
+}
+
 function createNewProjectSection(prop) {
      const title = translations[prop.title_key] || prop.title_key;
      const tag = translations['new_project_tag'] || 'Our New Project';

@@ -22,7 +22,7 @@ function createPropertyCard(prop) {
         <div class="property-card animate-on-scroll">
             <div class="property-card-image">
                 <img src="${prop.main_image}" alt="${title}" onerror="this.onerror=null;this.src='assets/images/placeholder.jpg';">
-                <div class.bind="property-card-status ${prop.status_key === 'status_hot_offer' ? 'hot-offer' : ''}">${status}</div>
+                <div class="property-card-status ${prop.status_key === 'status_hot_offer' ? 'hot-offer' : ''}">${status}</div>
             </div>
             <div class="property-card-body">
                 <h3>${title}</h3>
