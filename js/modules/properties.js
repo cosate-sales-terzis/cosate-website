@@ -1,46 +1,43 @@
 let allProperties = [];
 let translations = {};
 
-// Φορτώνει τα δεδομένα των ακινήτων
 async function fetchProperties() {
-    if (allProperties.length > 0) return; // Φόρτωσε τα μόνο μία φορά
+    if (allProperties.length > 0) return;
     try {
         const response = await fetch('js/data/properties.json');
-        if (!response.ok) throw new Error('Could not fetch properties.');
+        if (!response.ok) throw new Error('Could not fetch properties.json');
         allProperties = await response.json();
     } catch (error) {
         console.error(error);
     }
 }
 
-// Δημιουργεί το HTML για μια κάρτα ακινήτου
 function createPropertyCard(prop) {
-    const title = translations[prop.title_key] || prop.title_key;
-    const location = translations[prop.location_key] || prop.location_key;
-    const status = translations[prop.status_key] || prop.status_key;
-    const price = new Intl.NumberFormat('de-DE').format(prop.price); // Για σωστή μορφοποίηση τιμής
+    const title = translations[prop.title_key] || prop.title_key || "Property";
+    const location = translations[prop.location_key] || prop.location_key || "";
+    const status = translations[prop.status_key] || prop.status_key || "";
+    const price = prop.price ? `${prop.currency || '€'}${new Intl.NumberFormat('de-DE').format(prop.price)}` : "";
 
     return `
         <div class="property-card animate-on-scroll">
             <div class="property-card-image">
-                <img src="${prop.main_image}" alt="${title}">
-                <div class="property-card-status">${status}</div>
+                <img src="${prop.main_image}" alt="${title}" onerror="this.onerror=null;this.src='assets/images/placeholder.jpg';">
+                <div class.bind="property-card-status ${prop.status_key === 'status_hot_offer' ? 'hot-offer' : ''}">${status}</div>
             </div>
             <div class="property-card-body">
                 <h3>${title}</h3>
                 <p class="location">${location}</p>
-                <p class="price">${prop.currency}${price}</p>
+                <p class="price">${price}</p>
                 <div class="features">
-                    <span><i class="icon-bed"></i> ${prop.bedrooms} Beds</span>
-                    <span><i class="icon-bath"></i> ${prop.bathrooms} Baths</span>
-                    <span><i class="icon-area"></i> ${prop.area} m²</span>
+                    ${prop.bedrooms ? `<span><i class="icon-bed"></i> ${prop.bedrooms} Beds</span>` : ''}
+                    ${prop.bathrooms ? `<span><i class="icon-bath"></i> ${prop.bathrooms} Baths</span>` : ''}
+                    ${prop.area ? `<span><i class="icon-area"></i> ${prop.area} m²</span>` : ''}
                 </div>
             </div>
         </div>
     `;
 }
 
-// Δημιουργεί το HTML για την ενότητα του νέου έργου
 function createNewProjectSection(prop) {
      const title = translations[prop.title_key] || prop.title_key;
      const tag = translations['new_project_tag'] || 'Our New Project';
@@ -57,15 +54,13 @@ function createNewProjectSection(prop) {
                     <a href="#" class="btn btn-primary" data-lang-key="new_project_btn">${btnText}</a>
                 </div>
                 <div class="new-project-image">
-                    <img src="${prop.main_image}" alt="${title}">
+                    <img src="${prop.main_image}" alt="${title}" onerror="this.onerror=null;this.src='assets/images/placeholder.jpg';">
                 </div>
             </div>
         </div>
      `;
 }
 
-
-// Κύρια λειτουργία που γεμίζει τις ενότητες της σελίδας
 export async function displayProperties(langTranslations) {
     translations = langTranslations;
     await fetchProperties();
