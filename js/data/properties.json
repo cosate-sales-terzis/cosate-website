@@ -1,18 +1,50 @@
 [
-    {
-        "id": "A2",
-        "type_key": "type_apartment",
-        "image": "assets/images/placeholder-apartment.jpg",
-        "title_key": "title_A2",
-        "area": 65.39,
-        "bedrooms": 2
-    },
-    {
-        "id": "M1",
-        "type_key": "type_maisonette",
-        "image": "assets/images/placeholder-maisonette.jpg",
-        "title_key": "title_M1",
-        "area": 120,
-        "bedrooms": 3
-    }
+  {
+    "id": "kerd_a2",
+    "isFeatured": true,
+    "title_key": "kerd_a2_title",
+    "location_key": "loc_kerd",
+    "status_key": "status_new_construction",
+    "type_key": "type_apartment",
+    "price": 150000,
+    "area": 65.39,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "main_image": "assets/images/properties/placeholder.jpg"
+  },
+  {
+    "id": "vrasna_m1",
+    "isFeatured": true,
+    "title_key": "vrasna_m1_title",
+    "location_key": "loc_vrasna",
+    "status_key": "status_hot_offer",
+    "type_key": "type_maisonette",
+    "price": 240000,
+    "area": 93,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "main_image": "assets/images/properties/placeholder.jpg"
+  },
+  {
+    "id": "logkari_a1",
+    "isFeatured": true,
+    "title_key": "logkari_a1_title",
+    "location_key": "loc_logkari",
+    "status_key": "status_for_sale",
+    "type_key": "type_apartment",
+    "price": 105000,
+    "area": 45,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "main_image": "assets/images/properties/placeholder.jpg"
+  },
+  {
+    "id": "kerd_project",
+    "isNewProject": true,
+    "title_key": "kerd_project_title",
+    "location_key": "loc_kerd",
+    "status_key": "status_new_project",
+    "type_key": "type_complex",
+    "main_image": "assets/images/properties/kerd_project_main.jpg"
+  }
 ]

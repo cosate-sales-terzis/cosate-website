@@ -1,28 +1,55 @@
-// Function to fetch translation files and set the language
-async function setLanguage(lang) {
-  const response = await fetch(`js/i18n/${lang}.json`);
-  const translations = await response.json();
+import { loadPartials } from './modules/partials.js';
+import { initLanguageSwitcher, getCurrentTranslations } from './modules/i18n.js';
+import { displayProperties } from './modules/properties.js';
 
-  document.querySelectorAll("[data-lang-key]").forEach((elem) => {
-    const key = elem.getAttribute("data-lang-key");
-    if (translations[key]) {
-      elem.innerHTML = translations[key];
+function initMobileMenu() {
+    // **ΔΙΟΡΘΩΣΗ:** Αυτή η συνάρτηση πρέπει να τρέχει αφού φορτώσει το header.
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('is-open');
+            menuToggle.classList.toggle('is-active');
+        });
     }
-  });
-
-  // Set the lang attribute of the html tag
-  document.documentElement.lang = lang;
 }
 
-// Event listeners for language switcher buttons
-document.querySelectorAll(".language-switcher button").forEach((button) => {
-  button.addEventListener("click", () => {
-    const selectedLang = button.getAttribute("data-lang");
-    setLanguage(selectedLang);
-  });
-});
+function initScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, { threshold: 0.1 });
 
-// Set the default language when the page loads
-document.addEventListener("DOMContentLoaded", () => {
-  setLanguage("el"); // Set Greek as the default language
-});
+    const observeElements = () => {
+         document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+    }
+    
+    return { observeElements };
+}
+
+async function initializePage() {
+    await loadPartials();
+    
+    initMobileMenu(); 
+    await initLanguageSwitcher(); 
+    
+    const { observeElements } = initScrollAnimations();
+    
+    const renderDynamicContent = async () => {
+        const currentTranslations = getCurrentTranslations();
+        await displayProperties(currentTranslations);
+        observeElements(); 
+    };
+
+    await renderDynamicContent();
+
+    document.addEventListener('languageChange', renderDynamicContent);
+}
+
+document.addEventListener('DOMContentLoaded', initializePage);
