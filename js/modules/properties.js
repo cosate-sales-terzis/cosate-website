@@ -14,14 +14,25 @@ async function fetchProperties() {
 
 function createPropertyCard(prop) {
     const title = translations[prop.title_key] || prop.title_key || "Property";
-    const location = translations[prop.location_key] || prop.location_key || "";
     const status = translations[prop.status_key] || prop.status_key || "";
-    const price = prop.price ? `${prop.currency || '€'}${new Intl.NumberFormat('de-DE').format(prop.price)}` : "";
+    const price = prop.price > 0 ? `${prop.currency || '€'}${new Intl.NumberFormat('de-DE').format(prop.price)}` : "Κατόπιν Επικοινωνίας";
 
-    // **ΔΙΟΡΘΩΣΗ:** Βελτιωμένος χειρισμός για να μην εμφανίζεται "undefined"
-    const bedrooms = prop.bedrooms ? `<span><i class="icon-bed"></i> ${prop.bedrooms} Beds</span>` : '';
-    const bathrooms = prop.bathrooms ? `<span><i class="icon-bath"></i> ${prop.bathrooms} Baths</span>` : '';
-    const area = prop.area ? `<span><i class="icon-area"></i> ${prop.area} m²</span>` : '';
+    // **ΝΕΑ ΛΟΓΙΚΗ:** Δημιουργία λίστας χαρακτηριστικών δυναμικά
+    let featuresHTML = '';
+    if (prop.features_keys && Array.isArray(prop.features_keys)) {
+        prop.features_keys.forEach(key => {
+            featuresHTML += `<span>${translations[key] || key}</span>`;
+        });
+    }
+    
+    // **ΠΡΟΣΘΗΚΗ:** Δημιουργία των βασικών στατιστικών (m², δωμάτια, μπάνια)
+    const statsHTML = `
+        <div class="stats">
+            ${prop.area ? `<span><i class="icon-area"></i> ${prop.area} m²</span>` : ''}
+            ${prop.bedrooms ? `<span><i class="icon-bed"></i> ${prop.bedrooms} Δωμ.</span>` : ''}
+            ${prop.bathrooms ? `<span><i class="icon-bath"></i> ${prop.bathrooms} Μπ.</span>` : ''}
+        </div>
+    `;
 
     return `
         <div class="property-card animate-on-scroll">
@@ -31,57 +42,47 @@ function createPropertyCard(prop) {
             </div>
             <div class="property-card-body">
                 <h3>${title}</h3>
-                <p class="location">${location}</p>
                 <p class="price">${price}</p>
+                ${statsHTML} 
                 <div class="features">
-                    ${bedrooms}
-                    ${bathrooms}
-                    ${area}
+                   <h4>Χαρακτηριστικά:</h4>
+                   ${featuresHTML}
                 </div>
             </div>
         </div>
     `;
 }
 
-function createNewProjectSection(prop) {
-     const title = translations[prop.title_key] || prop.title_key;
-     const tag = translations['new_project_tag'] || 'Our New Project';
-     const desc = translations['new_project_desc'] || '';
-     const btnText = translations['new_project_btn'] || 'Explore';
-
-     return `
-        <div class="container">
-            <div class="new-project-content animate-on-scroll">
-                <div class="new-project-text">
-                    <h2 data-lang-key="new_project_tag">${tag}</h2>
-                    <h3 data-lang-key="new_project_title">${title}</h3>
-                    <p data-lang-key="new_project_desc">${desc}</p>
-                    <a href="#" class="btn btn-primary" data-lang-key="new_project_btn">${btnText}</a>
-                </div>
-                <div class="new-project-image">
-                    <img src="${prop.main_image}" alt="${title}" onerror="this.onerror=null;this.src='assets/images/properties/placeholder.jpg';">
-                </div>
-            </div>
-        </div>
-     `;
-}
 
 export async function displayProperties(langTranslations) {
     translations = langTranslations;
     await fetchProperties();
 
     const featuredContainer = document.getElementById('featured-properties-grid');
-    const newProjectContainer = document.getElementById('new-project-section-placeholder');
 
     if (featuredContainer) {
         const featuredProperties = allProperties.filter(p => p.isFeatured);
         featuredContainer.innerHTML = featuredProperties.map(createPropertyCard).join('');
     }
+}
 
-    if (newProjectContainer) {
-        const newProject = allProperties.find(p => p.isNewProject);
-        if (newProject) {
-            newProjectContainer.innerHTML = createNewProjectSection(newProject);
-        }
+// **ΝΕΑ ΣΥΝΑΡΤΗΣΗ ΓΙΑ ΤΗ ΣΕΛΙΔΑ LISTINGS**
+export async function displayAllProperties(langTranslations, filter = 'all') {
+    translations = langTranslations;
+    await fetchProperties();
+
+    const container = document.getElementById('all-properties-grid');
+    if (!container) return;
+
+    let propertiesToDisplay = allProperties;
+
+    if (filter !== 'all') {
+        propertiesToDisplay = allProperties.filter(prop => prop.type_key === filter);
+    }
+    
+    if (propertiesToDisplay.length > 0) {
+        container.innerHTML = propertiesToDisplay.map(createPropertyCard).join('');
+    } else {
+        container.innerHTML = `<p>Δεν βρέθηκαν ακίνητα για αυτή την κατηγορία.</p>`;
     }
 }

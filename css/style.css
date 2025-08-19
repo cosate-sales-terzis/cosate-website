@@ -6,7 +6,7 @@
     --background-grey: #f7f8f9;
     --white: #ffffff;
     --font-family: 'Plus Jakarta Sans', sans-serif;
-    --header-height: 80px;
+    --header-height: 90px; /* Αυξήθηκε λίγο για άνεση */
 }
 
 * {
@@ -24,6 +24,8 @@ body {
     color: var(--dark-text);
     background-color: var(--white);
     line-height: 1.7;
+    /* Προσθήκη padding-top για να μην κρύβεται το περιεχόμενο κάτω από το header */
+    padding-top: var(--header-height);
 }
 
 .container {
@@ -40,6 +42,7 @@ body {
     transition: all 0.3s ease;
     cursor: pointer;
     border: none;
+    white-space: nowrap; /* Αποτρέπει το κείμενο από το να σπάσει σε νέα γραμμή */
 }
 
 .btn-primary {
@@ -109,27 +112,20 @@ body {
 }
 .main-header .container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-}
-
-/* Logo */
-.main-header .logo {
-    flex: 0 0 auto;
+    align-items: center;
+    width: 100%;
 }
 .main-header .logo img {
-    max-height: 65px !important;  /* πάντα μικρό */
-    width: auto !important;       /* διατηρεί αναλογίες */
-    height: auto !important;
-    object-fit: contain;
+    height: 60px; /* Τέλειο μέγεθος για το ύψος του header */
+    width: auto;
     display: block;
 }
-/* Main navigation */
-.main-nav {
-    flex: 1 1 auto;
+/* **ΝΕΑ ΔΟΜΗ ΓΙΑ ΣΤΟΙΧΙΣΗ ΔΕΞΙΑ** */
+.header-right-group {
     display: flex;
-    justify-content: center;
     align-items: center;
+    gap: 30px;
 }
 .main-nav ul {
     list-style: none;
@@ -156,14 +152,10 @@ body {
 .main-nav a:hover::after {
     width: 100%;
 }
-
-/* Actions δεξιά */
 .header-actions {
-    flex: 0 0 auto;
     display: flex;
     align-items: center;
-    gap: 20px;
-    margin-left: 30px;
+    gap: 15px;
 }
 
 /* --- Language Switcher --- */
@@ -228,14 +220,13 @@ body {
 
 /* --- Hero Section --- */
 .hero-section {
-    height: 100vh;
+    height: calc(100vh - var(--header-height));
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--white);
-    padding-top: var(--header-height);
 }
 .hero-background-slider {
     position: absolute;
@@ -314,6 +305,7 @@ body {
 .mobile-menu-toggle span { display: block; width: 25px; height: 3px; background-color: var(--primary-color); margin: 5px 0; transition: all 0.3s ease; }
 
 @media (max-width: 992px) {
+    .header-right-group { display: none; } /* Απόκρυψη της ομάδας σε κινητά */
     .main-nav { 
         display: none; 
         position: fixed; 
@@ -336,12 +328,6 @@ body {
     .mobile-menu-toggle.is-active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .mobile-menu-toggle.is-active span:nth-child(2) { opacity: 0; }
     .mobile-menu-toggle.is-active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
-
-    /* Logo μικρότερο σε κινητά */
-    .main-header .logo img {
-        max-height: 55px;
-    }
-
     .hero-content h1 { font-size: 2.5rem; }
     .new-project-content { grid-template-columns: 1fr; }
     .new-project-image { grid-row: 1; }
@@ -350,4 +336,104 @@ body {
 @media (max-width: 768px) {
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 15px; }
+}
+
+/* --- Amenities Section --- */
+.amenities-section {
+    background-color: var(--background-grey);
+}
+.amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+.amenity-item {
+    padding: 20px;
+}
+.amenity-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+.amenity-item h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* --- Property Card Enhancements --- */
+.property-card-body .stats {
+    display: flex;
+    gap: 15px;
+    color: #555;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    font-weight: 500;
+}
+.property-card-body .features {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px; 
+    margin-top: auto; /* Σπρώχνει τα features προς τα κάτω */
+}
+.property-card-body .features h4 {
+    font-size: 1rem;
+    color: var(--dark-text);
+    margin-bottom: 5px;
+}
+.property-card-body .features span {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+.property-card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* --- Page Header --- */
+.page-header {
+    background-color: var(--background-grey);
+    padding: 60px 0;
+    text-align: center;
+}
+.page-header h1 {
+    color: var(--primary-color);
+    font-size: 2.8rem;
+}
+.page-header p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* --- Filters Toolbar --- */
+.filters-toolbar {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+.filter-btn {
+    background-color: var(--white);
+    color: var(--dark-text);
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+.filter-btn:hover {
+    background-color: var(--background-grey);
+    border-color: #ccc;
+}
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
 }

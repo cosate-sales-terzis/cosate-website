@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-lang-key="site_title">Group Real Estate</title>
-    
+    <title data-lang-key="site_title"></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Η ΚΡΙΣΙΜΗ ΔΙΟΡΘΩΣΗ ΕΙΝΑΙ ΕΔΩ: Προσθήκη timestamp για να αγνοηθεί 100% η cache -->
-    <link rel="stylesheet" href="css/style.css?v=3.0">
+    <link rel="stylesheet" href="css/style.css?v=1.2">
 </head>
 <body>
-
     <header id="header-placeholder" class="main-header"></header>
 
     <main>
@@ -26,6 +22,32 @@
             </div>
         </section>
 
+        <section class="content-section amenities-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 data-lang-key="amenities_title"></h2>
+                </div>
+                <div class="amenities-grid">
+                    <div class="amenity-item animate-on-scroll">
+                        <div class="amenity-icon">🌊</div>
+                        <h3 data-lang-key="feature_sea_view"></h3>
+                    </div>
+                    <div class="amenity-item animate-on-scroll">
+                        <div class="amenity-icon">☀️</div>
+                        <h3 data-lang-key="feature_roof_garden"></h3>
+                    </div>
+                    <div class="amenity-item animate-on-scroll">
+                        <div class="amenity-icon">🚗</div>
+                        <h3 data-lang-key="feature_parking"></h3>
+                    </div>
+                    <div class="amenity-item animate-on-scroll">
+                        <div class="amenity-icon">🌳</div>
+                        <h3 data-lang-key="feature_private_garden"></h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="content-section featured-properties">
             <div class="container">
                 <div class="section-header animate-on-scroll">
@@ -35,20 +57,6 @@
                 <div id="featured-properties-grid" class="properties-grid">
                     <!-- Οι κάρτες των ακινήτων θα φορτώσουν εδώ -->
                 </div>
-            </div>
-        </section>
-        
-        <section id="new-project-section-placeholder" class="content-section new-project-section">
-            <!-- Το νέο έργο θα φορτώσει εδώ -->
-        </section>
-
-        <section class="content-section services-section">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2 data-lang-key="services_title"></h2>
-                    <p data-lang-key="services_subtitle"></p>
-                </div>
-                <!-- Service items can be added here -->
             </div>
         </section>
     </main>

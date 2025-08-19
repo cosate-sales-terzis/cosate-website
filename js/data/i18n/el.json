@@ -1,50 +1,40 @@
 {
-    "site_title": "Group Real Estate - Τερζής & Μπακατζαδάκης",
-    "nav_home": "Αρχική",
-    "nav_about": "Σχετικά",
-    "nav_listings": "Ακίνητα",
-    "nav_blog": "Blog",
-    "nav_contact": "Επικοινωνία",
-    "nav_contact_btn": "Επικοινωνία",
+    "site_title": "Constructions Sales Terzis",
+    "nav_home": "Αρχική", "nav_about": "Η Εταιρεία", "nav_listings": "Ακίνητα", "nav_blog": "Blog", "nav_contact": "Επικοινωνία", "nav_contact_btn": "Επικοινωνία",
+    
+    "listings_page_title": "Όλα τα Διαθέσιμα Ακίνητα",
+    "listings_page_subtitle": "Εξερευνήστε τις επιλογές στο συγκρότημα των Νέων Κερδυλλίων",
+    "filter_all": "Όλα",
+    "filter_apartments": "Διαμερίσματα",
+    "filter_maisonettes_attic": "Μεζονέτες με Σοφίτα",
+    "filter_maisonettes_detached": "Μονοκατοικίες",
 
-    "hero_title": "Ανακαλύψτε το Επόμενο Σπίτι, Εκεί που η Άνεση Συναντά το Στυλ Ζωής",
-    "hero_subtitle": "Κάνουμε το ταξίδι σας στον κόσμο των ακινήτων απλό και αποδοτικό.",
+    "hero_title": "Το Σπίτι των Ονείρων σας, Δίπλα στη Θάλασσα",
+    "hero_subtitle": "Ανακαλύψτε νεόδμητες κατοικίες υψηλής αισθητικής στα Νέα Κερδύλλια.",
+    "featured_title": "Προτεινόμενα Ακίνητα", "featured_subtitle": "Επιλεγμένες προτάσεις από το νέο μας συγκρότημα",
+    "amenities_title": "Παροχές Υψηλών Προδιαγραφών",
 
-    "featured_title": "Προτεινόμενα Ακίνητα",
-    "featured_subtitle": "Η Επόμενη Μεγάλη σας Ανακάλυψη",
-
-    "new_project_tag": "Το Νέο μας Έργο",
-    "new_project_title": "Παραθαλάσσιες Κατοικίες στα Νέα Κερδύλλια",
-    "new_project_desc": "Ανακαλύψτε το ολοκαίνουργιο συγκρότημα σύγχρονων διαμερισμάτων και μεζονετών, σε ιδανική τοποθεσία μεταξύ θάλασσας και ιστορίας. Μια ιδανική επιλογή για διακοπές ή επένδυση.",
-    "new_project_btn": "Εξερευνήστε το Έργο",
-
-    "services_title": "Οι Τοπικοί σας Ειδικοί στην Αριστεία του Real Estate",
-    "services_subtitle": "Από την πρώτη συνάντηση μέχρι την τελική υπογραφή, η ομάδα μας δεσμεύεται να προσφέρει μια απρόσκοπτη εμπειρία.",
+    "title_D1": "Διαμέρισμα Ισογείου Δ1", "title_D2": "Διαμέρισμα Ισογείου Δ2", "title_D3": "Διαμέρισμα Ισογείου Δ3", "title_D4": "Διαμέρισμα Ισογείου Δ4", "title_D5": "Διαμέρισμα Ισογείου Δ5", "title_D6": "Διαμέρισμα Ισογείου Δ6",
+    "title_No1": "Μεζονέτα No1 με Σοφίτα", "title_No2": "Μεζονέτα No2 με Σοφίτα",
+    "title_K1": "Ανεξάρτητη Μονοκατοικία",
+    
+    "loc_kerd": "Νέα Κερδύλλια",
+    
+    "status_new_construction": "Νεόδμητο",
+    "type_apartment": "Διαμέρισμα",
+    "type_maisonette_attic": "Μεζονέτα με Σοφίτα",
+    "type_maisonette_detached": "Μονοκατοικία",
+    
+    "feature_sea_view": "Θέα Θάλασσα",
+    "feature_roof_garden": "Ιδιωτικός Χώρος σε Roof Garden (20 τ.μ.)",
+    "feature_parking": "Θέση Parking",
+    "feature_attic": "Σοφίτα",
+    "feature_large_verandas": "Μεγάλες Βεράντες",
+    "feature_private_garden": "Ιδιωτικός Κήπος (250-300 τ.μ.)",
+    "feature_verandas": "2 Βεράντες",
     
     "footer_about": "Ο αξιόπιστος συνεργάτης σας στην εύρεση του τέλειου ακινήτου. Με πάνω από 20 χρόνια εμπειρίας, προσφέρουμε αριστεία και αφοσίωση.",
-    "footer_links_title": "Γρήγοροι Σύνδεσμοι",
-    "footer_new_project": "Το Νέο μας Έργο",
-    "footer_contact_title": "Στοιχεία Επικοινωνίας",
-    "footer_newsletter_title": "Newsletter",
-    "footer_newsletter_subtitle": "Λάβετε τις τελευταίες προσφορές και νέα.",
-    "footer_subscribe_btn": "Εγγραφή",
-    "placeholder_email": "Το Email σας",
-
-    "kerd_a2_title": "Διαμέρισμα A-2, 65m²",
-    "vrasna_m1_title": "Μεζονέτα, 93m², Νέα Βρασνά",
-    "logkari_a1_title": "Διαμέρισμα, 45m², Λογκάρι",
-    "kerd_project_title": "Συγκρότημα Νέα Κερδύλλια",
-
-    "loc_kerd": "Νέα Κερδύλλια",
-    "loc_vrasna": "Νέα Βρασνά",
-    "loc_logkari": "Λογκάρι",
-
-    "status_new_construction": "Νεόδμητο",
-    "status_hot_offer": "Hot Offer",
-    "status_for_sale": "Προς Πώληση",
-    "status_new_project": "Νέο Έργο",
-
-    "type_apartment": "Διαμέρισμα",
-    "type_maisonette": "Μεζονέτα",
-    "type_complex": "Συγκρότημα Κατοικιών"
+    "footer_links_title": "Γρήγοροι Σύνδεσμοι", "footer_new_project": "Το Νέο μας Έργο", "footer_contact_title": "Στοιχεία Επικοινωνίας",
+    "footer_newsletter_title": "Newsletter", "footer_newsletter_subtitle": "Λάβετε τις τελευταίες προσφορές και νέα.",
+    "footer_subscribe_btn": "Εγγραφή", "placeholder_email": "Το Email σας"
 }

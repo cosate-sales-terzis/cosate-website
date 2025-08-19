@@ -1,63 +1,67 @@
 [
   {
-    "id": "kerd_a2",
-    "isFeatured": true,
-    "title_key": "kerd_a2_title",
-    "location_key": "loc_kerd",
-    "status_key": "status_new_construction",
-    "type_key": "type_apartment",
-    "price": 150000,
-    "area": 65.39,
-    "bedrooms": 2,
-    "bathrooms": 1,
-    "main_image": "assets/images/properties/placeholder.jpg"
+    "id": "D1", "isFeatured": true, "floor": "ground",
+    "title_key": "title_D1", "type_key": "type_apartment",
+    "area": 65.39, "bedrooms": 2, "bathrooms": 1,
+    "features_keys": ["feature_sea_view", "feature_roof_garden", "feature_parking"],
+    "main_image": "assets/images/properties/isogio.png"
   },
   {
-    "id": "vrasna_m1",
-    "isFeatured": true,
-    "title_key": "vrasna_m1_title",
-    "location_key": "loc_vrasna",
-    "status_key": "status_hot_offer",
-    "type_key": "type_maisonette",
-    "price": 240000,
-    "area": 93,
-    "bedrooms": 4,
-    "bathrooms": 3,
-    "main_image": "assets/images/properties/placeholder.jpg"
+    "id": "D2", "isFeatured": true, "floor": "ground",
+    "title_key": "title_D2", "type_key": "type_apartment",
+    "area": 76.52, "bedrooms": 2, "bathrooms": 1,
+    "features_keys": ["feature_sea_view", "feature_roof_garden", "feature_parking"],
+    "main_image": "assets/images/properties/isogio.png"
   },
   {
-    "id": "logkari_a1",
-    "isFeatured": true,
-    "title_key": "logkari_a1_title",
-    "location_key": "loc_logkari",
-    "status_key": "status_for_sale",
-    "type_key": "type_apartment",
-    "price": 105000,
-    "area": 46,
-    "bedrooms": 2,
-    "bathrooms": 2,
-    "main_image": "assets/images/properties/placeholder.jpg"
-  },
-    {
-    "id": "logkari_a1",
-    "isFeatured": true,
-    "title_key": "logkari_a1_title",
-    "location_key": "loc_logkari",
-    "status_key": "status_for_sale",
-    "type_key": "type_apartment",
-    "price": 105000,
-    "area": 46,
-    "bedrooms": 2,
-    "bathrooms": 2,
-    "main_image": "assets/images/properties/placeholder.jpg"
+    "id": "D3", "isFeatured": true, "floor": "ground",
+    "title_key": "title_D3", "type_key": "type_apartment",
+    "area": 65.38, "bedrooms": 2, "bathrooms": 1,
+    "features_keys": ["feature_sea_view", "feature_roof_garden", "feature_parking"],
+    "main_image": "assets/images/properties/isogio.png"
   },
   {
-    "id": "kerd_project",
-    "isNewProject": true,
-    "title_key": "kerd_project_title",
-    "location_key": "loc_kerd",
-    "status_key": "status_new_project",
-    "type_key": "type_complex",
-    "main_image": "assets/images/properties/kerd_project_main.jpg"
+    "id": "D4", "isFeatured": true, "floor": "ground",
+    "title_key": "title_D4", "type_key": "type_apartment",
+    "area": 72.24, "bedrooms": 2, "bathrooms": 1,
+    "features_keys": ["feature_sea_view", "feature_roof_garden", "feature_parking"],
+    "main_image": "assets/images/properties/isogio.png"
+  },
+  {
+    "id": "D5", "isFeatured": true, "floor": "ground",
+    "title_key": "title_D5", "type_key": "type_apartment",
+    "area": 51.97, "bedrooms": 2, "bathrooms": 1,
+    "features_keys": ["feature_sea_view", "feature_roof_garden", "feature_parking"],
+    "main_image": "assets/images/properties/isogio.png"
+  },
+  {
+    "id": "D6", "isFeatured": true, "floor": "ground",
+    "title_key": "title_D6", "type_key": "type_apartment",
+    "area": 64.75, "bedrooms": 2, "bathrooms": 1,
+    "features_keys": ["feature_sea_view", "feature_roof_garden", "feature_parking"],
+    "main_image": "assets/images/properties/isogio.png"
+  },
+  {
+      "id": "No1", "isFeatured": true, "floor": "first",
+      "title_key": "title_No1", "type_key": "type_maisonette_attic",
+      "area": 114.78, "bedrooms": 3, "bathrooms": 2,
+      "features_keys": ["feature_sea_view", "feature_attic", "feature_parking", "feature_large_verandas"],
+      "main_image": "assets/images/properties/1os_orofos.png"
+  },
+  {
+      "id": "No2", "isFeatured": true, "floor": "first",
+      "title_key": "title_No2", "type_key": "type_maisonette_attic",
+      "area": 97.98, "bedrooms": 3, "bathrooms": 2,
+      "features_keys": ["feature_sea_view", "feature_attic", "feature_parking", "feature_large_verandas"],
+      "main_image": "assets/images/properties/1os_orofos.png",
+      "price": "350000"
+  },
+  {
+      "id": "K1", "isFeatured": true, "floor": "ground",
+      "title_key": "title_K1", "type_key": "type_maisonette_detached",
+      "area": 75, "bedrooms": 3, "bathrooms": 1,
+      "features_keys": ["feature_private_garden", "feature_parking", "feature_verandas"],
+      "plot_area": "250-300",
+      "main_image": "assets/images/properties/monokatoikies.png"
   }
 ]

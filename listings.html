@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="listings_page_title"></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=1.2">
+</head>
+<body>
+    <header id="header-placeholder" class="main-header"></header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1 data-lang-key="listings_page_title"></h1>
+                <p data-lang-key="listings_page_subtitle"></p>
+            </div>
+        </section>
+
+        <section class="content-section listings-section">
+            <div class="container">
+                <!-- **ΤΑ ΦΙΛΤΡΑ ΘΑ ΜΠΟΥΝ ΕΔΩ** -->
+                <div class="filters-toolbar">
+                    <button class="filter-btn active" data-filter="all" data-lang-key="filter_all"></button>
+                    <button class="filter-btn" data-filter="type_apartment" data-lang-key="filter_apartments"></button>
+                    <button class="filter-btn" data-filter="type_maisonette_attic" data-lang-key="filter_maisonettes_attic"></button>
+                    <button class="filter-btn" data-filter="type_maisonette_detached" data-lang-key="filter_maisonettes_detached"></button>
+                </div>
+
+                <!-- **ΤΑ ΑΚΙΝΗΤΑ ΘΑ ΕΜΦΑΝΙΣΤΟΥΝ ΕΔΩ** -->
+                <div id="all-properties-grid" class="properties-grid">
+                    <!-- Loading properties... -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer-placeholder" class="main-footer"></footer>
+
+    <script src="js/listings.js" type="module"></script>
+</body>
+</html>
