@@ -33,9 +33,22 @@
     "status_key": "status_for_sale",
     "type_key": "type_apartment",
     "price": 105000,
-    "area": 45,
+    "area": 46,
     "bedrooms": 2,
-    "bathrooms": 1,
+    "bathrooms": 2,
+    "main_image": "assets/images/properties/placeholder.jpg"
+  },
+    {
+    "id": "logkari_a1",
+    "isFeatured": true,
+    "title_key": "logkari_a1_title",
+    "location_key": "loc_logkari",
+    "status_key": "status_for_sale",
+    "type_key": "type_apartment",
+    "price": 105000,
+    "area": 46,
+    "bedrooms": 2,
+    "bathrooms": 2,
     "main_image": "assets/images/properties/placeholder.jpg"
   },
   {

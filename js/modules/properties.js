@@ -18,10 +18,15 @@ function createPropertyCard(prop) {
     const status = translations[prop.status_key] || prop.status_key || "";
     const price = prop.price ? `${prop.currency || '€'}${new Intl.NumberFormat('de-DE').format(prop.price)}` : "";
 
+    // **ΔΙΟΡΘΩΣΗ:** Βελτιωμένος χειρισμός για να μην εμφανίζεται "undefined"
+    const bedrooms = prop.bedrooms ? `<span><i class="icon-bed"></i> ${prop.bedrooms} Beds</span>` : '';
+    const bathrooms = prop.bathrooms ? `<span><i class="icon-bath"></i> ${prop.bathrooms} Baths</span>` : '';
+    const area = prop.area ? `<span><i class="icon-area"></i> ${prop.area} m²</span>` : '';
+
     return `
         <div class="property-card animate-on-scroll">
             <div class="property-card-image">
-                <img src="${prop.main_image}" alt="${title}" onerror="this.onerror=null;this.src='assets/images/placeholder.jpg';">
+                <img src="${prop.main_image}" alt="${title}" onerror="this.onerror=null;this.src='assets/images/properties/placeholder.jpg';">
                 <div class="property-card-status ${prop.status_key === 'status_hot_offer' ? 'hot-offer' : ''}">${status}</div>
             </div>
             <div class="property-card-body">
@@ -29,9 +34,9 @@ function createPropertyCard(prop) {
                 <p class="location">${location}</p>
                 <p class="price">${price}</p>
                 <div class="features">
-                    ${prop.bedrooms ? `<span><i class="icon-bed"></i> ${prop.bedrooms} Beds</span>` : ''}
-                    ${prop.bathrooms ? `<span><i class="icon-bath"></i> ${prop.bathrooms} Baths</span>` : ''}
-                    ${prop.area ? `<span><i class="icon-area"></i> ${prop.area} m²</span>` : ''}
+                    ${bedrooms}
+                    ${bathrooms}
+                    ${area}
                 </div>
             </div>
         </div>
@@ -54,7 +59,7 @@ function createNewProjectSection(prop) {
                     <a href="#" class="btn btn-primary" data-lang-key="new_project_btn">${btnText}</a>
                 </div>
                 <div class="new-project-image">
-                    <img src="${prop.main_image}" alt="${title}" onerror="this.onerror=null;this.src='assets/images/placeholder.jpg';">
+                    <img src="${prop.main_image}" alt="${title}" onerror="this.onerror=null;this.src='assets/images/properties/placeholder.jpg';">
                 </div>
             </div>
         </div>

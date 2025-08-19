@@ -1,6 +1,14 @@
 let translations = {};
 const flagBaseUrl = 'assets/images/flags/';
 
+// **Η ΔΙΟΡΘΩΣΗ ΕΙΝΑΙ ΕΔΩ:** Σωστή αντιστοίχιση κωδικών γλώσσας με ονόματα αρχείων σημαιών
+const flagMap = {
+    el: 'gr',
+    en: 'gb',
+    sr: 'rs',
+    bg: 'bg'
+};
+
 async function setLanguage(lang) {
     try {
         const response = await fetch(`js/data/i18n/${lang}.json`);
@@ -9,16 +17,12 @@ async function setLanguage(lang) {
 
         document.querySelectorAll('[data-lang-key]').forEach(elem => {
             const key = elem.getAttribute('data-lang-key');
-            if (translations[key]) {
-                elem.textContent = translations[key];
-            }
+            if (translations[key]) elem.textContent = translations[key];
         });
         
         document.querySelectorAll('[data-lang-placeholder]').forEach(elem => {
             const key = elem.getAttribute('data-lang-placeholder');
-            if (translations[key]) {
-                elem.placeholder = translations[key];
-            }
+            if (translations[key]) elem.placeholder = translations[key];
         });
 
         document.documentElement.lang = lang;
@@ -33,7 +37,8 @@ async function setLanguage(lang) {
 function updateLanguageSwitcher(lang) {
     const currentFlag = document.getElementById('current-flag');
     const currentLangText = document.getElementById('current-lang-text');
-    if (currentFlag) currentFlag.src = `${flagBaseUrl}${lang === 'en' ? 'gb' : lang}.svg`;
+    const flagFileName = flagMap[lang] || 'gr'; // Default σε ελληνική σημαία
+    if (currentFlag) currentFlag.src = `${flagBaseUrl}${flagFileName}.svg`;
     if (currentLangText) currentLangText.textContent = lang.toUpperCase();
 }
 

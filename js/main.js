@@ -5,7 +5,6 @@ import { displayProperties } from './modules/properties.js';
 function initMobileMenu() {
     const menuToggle = document.getElementById('mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');
-
     if (menuToggle && mainNav) {
         menuToggle.addEventListener('click', () => {
             mainNav.classList.toggle('is-open');
@@ -29,13 +28,11 @@ function initScrollAnimations() {
             observer.observe(element);
         });
     }
-    
     return { observeElements };
 }
 
 async function initializePage() {
     await loadPartials();
-    
     initMobileMenu(); 
     await initLanguageSwitcher(); 
     
@@ -43,12 +40,15 @@ async function initializePage() {
     
     const renderDynamicContent = async () => {
         const currentTranslations = getCurrentTranslations();
+        if (Object.keys(currentTranslations).length === 0) {
+            console.log("Translations not ready yet, skipping render.");
+            return;
+        }
         await displayProperties(currentTranslations);
         observeElements(); 
     };
 
     await renderDynamicContent();
-
     document.addEventListener('languageChange', renderDynamicContent);
 }
 
