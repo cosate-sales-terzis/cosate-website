@@ -15,7 +15,7 @@ async function fetchProperties() {
 function createPropertyCard(prop) {
     const title = translations[prop.title_key] || prop.title_key || "Property";
     const status = translations[prop.status_key] || prop.status_key || "";
-    const price = prop.price > 0 ? `${prop.currency || '€'}${new Intl.NumberFormat('de-DE').format(prop.price)}` : "Κατόπιν Επικοινωνίας";
+    const price = prop.price > 0 ? `${prop.currency || '€'}${new Intl.NumberFormat('de-DE').format(prop.price)}` : "Τιμή Κατόπιν Επικοινωνίας";
 
     // **ΝΕΑ ΛΟΓΙΚΗ:** Δημιουργία λίστας χαρακτηριστικών δυναμικά
     let featuresHTML = '';

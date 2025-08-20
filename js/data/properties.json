@@ -53,8 +53,7 @@
       "title_key": "title_No2", "type_key": "type_maisonette_attic",
       "area": 97.98, "bedrooms": 3, "bathrooms": 2,
       "features_keys": ["feature_sea_view", "feature_attic", "feature_parking", "feature_large_verandas"],
-      "main_image": "assets/images/properties/1os_orofos.png",
-      "price": "350000"
+      "main_image": "assets/images/properties/1os_orofos.png"
   },
   {
       "id": "K1", "isFeatured": true, "floor": "ground",
