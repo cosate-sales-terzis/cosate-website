@@ -1,0 +1,15 @@
+/* ============================================= */
+/* ==          CSS Variables                  == */
+/* ==      Χρώματα, Γραμματοσειρές, κλπ.        == */
+/* ============================================= */
+
+:root {
+    --primary-color: #e12828;
+    --accent-color: #ffcb3d;
+    --dark-text: #222222;
+    --light-text: #222222;
+    --background-grey: #f7f8f9;
+    --white: #ffffff;
+    --font-family: 'Plus Jakarta Sans', sans-serif;
+    --header-height: 90px;
+}

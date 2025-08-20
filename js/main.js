@@ -113,10 +113,10 @@ function setupCarousel(options) {
 
         const stopAutoScroll = () => clearInterval(autoScrollInterval);
 
-        carousel.addEventListener('touchstart', stopAutoScroll, { passive: true });
-        carousel.addEventListener('touchend', () => setTimeout(startAutoScroll, 5000));
+       // carousel.addEventListener('touchstart', stopAutoScroll, { passive: true });
+       // carousel.addEventListener('touchend', () => setTimeout(startAutoScroll, 5000));
 
-        startAutoScroll();
+       // startAutoScroll();
     }
 }
 

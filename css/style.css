@@ -596,9 +596,13 @@ body {
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
     }
-}
 
-/* Μέσα στο @media (max-width: 768px) στο style.css */
+    .amenities-grid .amenity-item + .amenity-item,
+    .properties-grid .property-card + .property-card {
+        border-left: 1px solid #e0e0e0; /* Μια απαλή γκρι γραμμή */
+        padding-left: 15px;
+    }
+}
 
 /* --- 2. Featured Properties Section --- */
 .properties-grid {
