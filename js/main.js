@@ -43,6 +43,83 @@ function initHeroVideos() {
 }
 
 
+function initMobileCarousels() {
+    if (window.innerWidth > 768) {
+        return;
+    }
+
+    // Ρυθμίζουμε το carousel για τις Παροχές (Amenities)
+    setupCarousel({
+        carouselSelector: '.amenities-grid',
+        itemSelector: '.amenity-item',
+        dotsContainerId: 'amenities-dots',
+        scrollInterval: 3500
+    });
+
+    // Ρυθμίζουμε το carousel για τα Ακίνητα (Properties)
+    setupCarousel({
+        carouselSelector: '.featured-properties .properties-grid',
+        itemSelector: '.property-card',
+        dotsContainerId: 'properties-dots',
+        scrollInterval: 4500
+    });
+}
+
+function setupCarousel(options) {
+    const carousel = document.querySelector(options.carouselSelector);
+    const dotsContainer = document.getElementById(options.dotsContainerId);
+
+    if (!carousel || !dotsContainer) return;
+
+    const items = carousel.querySelectorAll(options.itemSelector);
+    if (items.length <= 1) return;
+
+    // --- Μόνο για mobile ---
+    if (window.innerWidth <= 768) {
+        // 1. Δημιουργία κουκίδων
+        dotsContainer.innerHTML = '';
+        items.forEach(() => {
+            const dot = document.createElement('button');
+            dot.classList.add('dot');
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = dotsContainer.querySelectorAll('.dot');
+        if(dots.length > 0) dots[0].classList.add('active');
+
+        // 2. Ενημέρωση ενεργής κουκίδας
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const itemIndex = Array.from(items).indexOf(entry.target);
+                    dots.forEach(d => d.classList.remove('active'));
+                    dots[itemIndex].classList.add('active');
+                }
+            });
+        }, { root: carousel, threshold: 0.5 });
+
+        items.forEach(item => observer.observe(item));
+
+        // 3. Λογική Αυτόματης Κύλισης
+        let autoScrollInterval;
+        const startAutoScroll = () => {
+            stopAutoScroll(); // Καθαρίζουμε τυχόν προηγούμενο interval
+            autoScrollInterval = setInterval(() => {
+                const currentActiveDot = Array.from(dots).findIndex(d => d.classList.contains('active'));
+                const nextIndex = (currentActiveDot + 1) % items.length;
+                items[nextIndex].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }, options.scrollInterval);
+        };
+
+        const stopAutoScroll = () => clearInterval(autoScrollInterval);
+
+        carousel.addEventListener('touchstart', stopAutoScroll, { passive: true });
+        carousel.addEventListener('touchend', () => setTimeout(startAutoScroll, 5000));
+
+        startAutoScroll();
+    }
+}
+
 function initMobileMenu() {
     const menuToggle = document.getElementById('mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');
@@ -87,6 +164,7 @@ async function initializePage() {
             return;
         }
         await displayProperties(currentTranslations);
+        initMobileCarousels();
         observeElements(); 
     };
 
