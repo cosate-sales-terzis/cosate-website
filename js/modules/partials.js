@@ -52,7 +52,7 @@ export async function loadPartials() {
                 const response = await fetch(part.url);
                 if (!response.ok) throw new Error(`Failed to load ${part.url}`);
                 const content = await response.text();
-                element.outerHTML = content;
+                element.innerHTML = content;
             } catch (error) {
                 console.error(`Error loading partial:`, error);
                 element.innerHTML = `<p style="color:red;">Could not load ${part.id}</p>`;

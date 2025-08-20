@@ -85,4 +85,8 @@ export async function displayAllProperties(langTranslations, filter = 'all') {
     } else {
         container.innerHTML = `<p>Δεν βρέθηκαν ακίνητα για αυτή την κατηγορία.</p>`;
     }
+
+        // Add this inside displayAllProperties in modules/properties.js
+    console.log('displayAllProperties called');
+    console.log(document.getElementById('all-properties-grid'));
 }
