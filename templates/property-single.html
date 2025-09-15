@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+{% endblock %}
+
+{% block content %}
+    <section class="page-header">
+        <div class="container">
+            <h1 data-lang-key="{{ prop.title_key }}"></h1>
+            <p>{{ prop.location }}</p>
+        </div>
+    </section>
+
+    <section class="content-section property-single-section">
+        <div class="container">
+            <div class="property-single-grid">
+                <div class="property-main-content">
+                    <div class="property-gallery">
+                        <div class="carousel-container" data-images='{{ prop.images|tojson }}'>
+                            <img src="" alt="" class="carousel-main-image">
+
+                            {% if prop.images|length > 1 %}
+                                <button class="carousel-button prev-button"><i class="bi bi-chevron-left"></i></button>
+                                <button class="carousel-button next-button"><i class="bi bi-chevron-right"></i></button>
+                            {% endif %}
+
+                            <button class="fullscreen-button" aria-label="View fullscreen">
+                                <i class="bi bi-arrows-fullscreen"></i>
+                            </button>
+
+                            <div class="carousel-thumbnails"></div>
+                        </div>
+                    </div>
+                    
+                    <h3 data-lang-key="property_description_title"></h3>
+                    <p class="property-description" data-lang-key="{{ prop.description_key }}"></p>
+                </div>
+
+                <aside class="property-sidebar">
+                    <div class="sidebar-widget">
+                        <p class="price">
+                            {% if prop.price > 0 %}
+                                €{{ prop.price|formatprice }}
+                            {% else %}
+                                <span data-lang-key="price_on_request"></span>
+                            {% endif %}
+                        </p>
+                        <ul class="property-stats-list">
+                            <li>
+                                <strong><span data-lang-key="prop_type_label"></span>:</strong> 
+                                <span data-lang-key="{{ prop.type }}"></span>
+                            </li>
+                            <li>
+                                <strong><span data-lang-key="prop_area_label"></span>:</strong> 
+                                <span><i class="bi bi-aspect-ratio"></i> {{ prop.area }} <span data-lang-key="prop_area_unit"></span></span>
+                            </li>
+                            <li>
+                                <strong><span data-lang-key="prop_bedrooms_label"></span>:</strong> 
+                                <span><i class="bi bi-door-open"></i> {{ prop.bedrooms }}</span>
+                            </li>
+                            <li>
+                                <strong><span data-lang-key="prop_bathrooms_label"></span>:</strong> 
+                                <span><i class="bi bi-droplet"></i> {{ prop.bathrooms }}</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h4 data-lang-key="prop_features"></h4>
+                        <ul class="features-list">
+                            {% for feature_key in prop.features_keys %}
+                                <li><i class="bi bi-check-circle-fill"></i> <span data-lang-key="{{ feature_key }}"></span></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-widget map-widget">
+                        <h4 data-lang-key="prop_location_title"></h4>
+                        <div class="map-container">
+                            <div id="property-map"></div>
+                        </div>
+                    </div>
+                
+                </aside>
+            </div>
+        </div>
+    </section>
+
+<div id="lightbox-overlay" class="lightbox-overlay">
+    
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-prev" aria-label="Previous image"><i class="bi bi-chevron-left"></i></button>
+    <button class="lightbox-next" aria-label="Next image"><i class="bi bi-chevron-right"></i></button>
+    <div class="lightbox-content">
+        <img src="" alt="Fullscreen property image" id="lightbox-image">
+    </div>
+    
+    <div class="lightbox-thumbnails"></div>
+</div>
+
+{% endblock %}
+
+
+{% block extra_scripts %}
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Παίρνουμε τις συντεταγμένες από τον server
+            const lat = {{ prop.lat }};
+            const lon = {{ prop.lon }};
+
+            if (lat && lon) {
+                // Αρχικοποίηση του χάρτη
+                const map = L.map('property-map').setView([lat, lon], 15);
+
+                // Προσθήκη του layer του χάρτη από το OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+
+                // Προσθήκη ενός marker στην τοποθεσία του ακινήτου
+                L.marker([lat, lon]).addTo(map);
+            }
+        });
+    </script>
+{% endblock %}

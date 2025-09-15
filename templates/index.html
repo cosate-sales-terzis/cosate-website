@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="hero-section">
+
+            <div class="hero-background-slider">
+                <video id="heroVideo1" class="hero-video is-active" src="{{ url_for('static', filename='assets/videos/video1.mp4') }}" muted playsinline></video>
+                <video id="heroVideo2" class="hero-video" src="{{ url_for('static', filename='assets/videos/video2.mp4') }}" muted playsinline></video>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <h1 class="animate-on-scroll" data-lang-key="hero_title"></h1>
+                <p class="animate-on-scroll" data-lang-key="hero_subtitle"></p>
+            </div>
+    </section>
+
+    <section class="content-section project-spotlight-section">
+        <div class="container">
+            <div class="spotlight-grid">
+                <div class="spotlight-info animate-on-scroll">
+                    <p class="spotlight-supertilte" data-lang-key="spotlight_supertitle"></p>
+                    <h2 class="spotlight-title" data-lang-key="spotlight_title"></h2>
+                    <p class="spotlight-desc" data-lang-key="spotlight_desc"></p>
+                    <ul class="spotlight-highlights">
+                        <li><i class="bi bi-check-circle-fill"></i> <span data-lang-key="spotlight_highlight1"></span></li>
+                        <li><i class="bi bi-check-circle-fill"></i> <span data-lang-key="spotlight_highlight2"></span></li>
+                        <li><i class="bi bi-check-circle-fill"></i> <span data-lang-key="spotlight_highlight3"></span></li>
+                    </ul>
+                    <a href="/project-kerdylia" class="btn btn-primary" data-lang-key="spotlight_cta"></a>
+                </div>
+
+                <div class="spotlight-gallery animate-on-scroll">
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section choose-us-section">
+        <div class="container">
+            <div class="choose-us-grid">
+                <div class="choose-us-image animate-on-scroll">
+                    <img src="/static/assets/images/indexphoto1.png" alt="Interior design of a modern home">
+                </div>
+                <div class="choose-us-content animate-on-scroll">
+                    <h2 data-lang-key="choose_us_title"></h2>
+                    <p data-lang-key="choose_us_desc"></p>
+                    <ul class="choose-us-list">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                            </svg>
+                            <span data-lang-key="choose_us_point1"></span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                            </svg>
+                            <span data-lang-key="choose_us_point2"></span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                            </svg>
+                            <span data-lang-key="choose_us_point3"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section testimonials-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 data-lang-key="testimonials_title"></h2>
+            </div>
+                <div class="review-cta-container animate-on-scroll">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJndTo70wfqRQRs09TrFzN_PA" target="_blank" class="btn btn-primary" data-lang-key="make_a_review_btn"></a>
+                </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text" data-lang-key="testimonial1_text"></p>
+                    <p class="testimonial-author" data-lang-key="testimonial1_author"></p>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text" data-lang-key="testimonial2_text"></p>
+                    <p class="testimonial-author" data-lang-key="testimonial2_author"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
