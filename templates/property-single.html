@@ -38,6 +38,7 @@
                 </div>
 
                 <aside class="property-sidebar">
+
                     <div class="sidebar-widget">
                         <p class="price">
                             {% if prop.price > 0 %}
@@ -47,6 +48,10 @@
                             {% endif %}
                         </p>
                         <ul class="property-stats-list">
+                            <li>
+                                <strong><span data-lang-key="prop_code_label"></span>:</strong> 
+                                <span> {{ prop.id }}</span>
+                            </li>
                             <li>
                                 <strong><span data-lang-key="prop_type_label"></span>:</strong> 
                                 <span data-lang-key="{{ prop.type }}"></span>
@@ -61,7 +66,7 @@
                             </li>
                             <li>
                                 <strong><span data-lang-key="prop_bathrooms_label"></span>:</strong> 
-                                <span><i class="bi bi-droplet"></i> {{ prop.bathrooms }}</span>
+                                <span><i class="bi bi-badge-wc"></i> {{ prop.bathrooms }}</span>
                             </li>
                         </ul>
                     </div>
@@ -73,6 +78,31 @@
                                 <li><i class="bi bi-check-circle-fill"></i> <span data-lang-key="{{ feature_key }}"></span></li>
                             {% endfor %}
                         </ul>
+                    </div>
+
+                    <div class="sidebar-widget contact-agent-widget">
+                        <h4 data-lang-key="contact_widget_title"></h4>
+                        <form id="property-contact-form" action="/send_message" method="post">
+                            <input type="hidden" name="property_id" value="{{ prop.id }}">
+                            <input type="hidden" name="property_title" value="{{ prop.title_key }}">
+
+                            <div class="form-group">
+                                <input type="text" name="name" required data-lang-placeholder="placeholder_name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" required data-lang-placeholder="placeholder_email">
+                            </div>
+                            <div class="form-group">
+                                <input id="phone-input" type="tel" name="phone_full" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" rows="4" required data-lang-key="property_interest_message" data-property-id="{{ prop.id }}"></textarea>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="submit" class="btn btn-primary" data-lang-key="contact_send_btn"></button>
+                                <button type="button" id="propose-price-btn" class="btn btn-secondary" data-lang-key="propose_price_btn"></button>
+                            </div>
+                        </form>
                     </div>
 
                     <div class="sidebar-widget map-widget">
@@ -99,6 +129,46 @@
     <div class="lightbox-thumbnails"></div>
 </div>
 
+<div id="price-proposal-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h3 data-lang-key="propose_price_title"></h3>
+            <div class="original-price-display">
+                <span data-lang-key="original_price_label"></span>: 
+                <strong id="modal-original-price"></strong> 
+            </div>
+            <p data-lang-key="propose_price_desc_15"></p>
+            <div class="form-group">
+                <input type="number" id="proposal-price-input" placeholder="0" class="price-input">
+                <span class="currency-symbol">€</span>
+            </div>
+            <p id="price-proposal-error" class="error-message"></p>
+            <button id="submit-proposal-btn" class="btn btn-primary" data-lang-key="continue_btn"></button>
+        </div>
+</div>
+
+<div id="proposal-contact-modal" class="modal-overlay">
+    <div class="modal-content">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <h3 data-lang-key="submit_offer_title"></h3>
+        <form id="proposal-contact-form" action="/propose_price" method="post">
+            <input type="hidden" name="property_id" value="{{ prop.id }}">
+            <input type="hidden" name="property_title" value="{{ prop.title_key }}">
+            <input type="hidden" id="hidden-proposed-price" name="proposed_price" value="">
+            
+            <div class="form-group">
+                <input type="text" name="name" required data-lang-placeholder="placeholder_name">
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" required data-lang-placeholder="placeholder_email">
+            </div>
+            <div class="form-group">
+                <input id="proposal-phone-input" type="tel" name="phone_full_proposal" required>
+            </div>
+            <button type="submit" class="btn btn-primary" data-lang-key="submit_offer_btn"></button>
+        </form>
+    </div>
+</div>
 {% endblock %}
 
 
@@ -125,4 +195,7 @@
             }
         });
     </script>
+
+    <script src="{{ url_for('static', filename='js/property-form.js') }}" type="module"></script>
+
 {% endblock %}

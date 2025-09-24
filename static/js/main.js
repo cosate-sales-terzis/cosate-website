@@ -270,7 +270,7 @@ function initListingsMap() {
                 <div class="popup-stats" style="display:flex; gap:10px; margin-top:8px; font-size:12px; color:#555;">
                     <span><i class="bi bi-aspect-ratio"></i> ${prop.area} m²</span>
                     <span><i class="bi bi-door-open"></i> ${prop.bedrooms}</span>
-                    <span><i class="bi bi-droplet"></i> ${prop.bathrooms}</span>
+                    <span><i class="bi bi-badge-wc"></i> ${prop.bathrooms}</span>
                 </div>
             </div>
         `;

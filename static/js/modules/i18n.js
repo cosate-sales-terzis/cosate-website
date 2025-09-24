@@ -21,7 +21,14 @@ async function setLanguage(lang) {
 
         document.querySelectorAll('[data-lang-key]').forEach(elem => {
             const key = elem.getAttribute('data-lang-key');
-            if (translations[key]) elem.innerHTML  = translations[key];
+            if (translations[key]) {
+                let text = translations[key];
+                // Αν υπάρχει property id, κάνε αντικατάσταση
+                if (elem.dataset.propertyId) {
+                    text = text.replace('%id%', elem.dataset.propertyId);
+                }
+                elem.textContent = text;
+            }
         });
         
         document.querySelectorAll('[data-lang-placeholder]').forEach(elem => {

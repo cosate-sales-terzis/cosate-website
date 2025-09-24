@@ -10,4 +10,3 @@ with open('schema.sql', encoding='utf-8') as f:
 
 connection.commit()
 connection.close()
-

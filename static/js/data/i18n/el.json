@@ -1,6 +1,6 @@
 {
     "site_title": "Group Real Estate - Constructions",
-    "nav_home": "Αρχική", "nav_about": "Η Εταιρεία", "nav_listings": "Ακίνητα", "nav_project_kerdylia": "Project Κερδύλλια", "nav_contact": "Επικοινωνία", "nav_contact_btn": "Επικοινωνία",
+    "nav_home": "Αρχική", "nav_about": "Η Εταιρεία", "nav_listings": "Ακίνητα", "nav_project_kerdylia": "Project Κερδύλλια","nav_project_the_twins": "Project The Twins", "nav_contact": "Επικοινωνία", "nav_contact_btn": "Επικοινωνία",
     "listings_page_subtitle": "Εξερευνήστε τις επιλογές στο συγκρότημα των Νέων Κερδυλλίων",
     "filter_all": "Όλα",
     "filter_apartments": "Διαμερίσματα",
@@ -74,8 +74,8 @@
     "faq11_question": "Μεσιτικά Γραφεία",
     "faq11_answer": "Τα μεσιτικά γραφεία αναλαμβάνουν την εύρεση, προώθηση και διαπραγμάτευση ακινήτων, παρέχοντας εξειδικευμένες υπηρεσίες σε αγοραστές και πωλητές.",
     "stat_experience": "Χρόνια Εμπειρίας",
-    "stat_properties": "Ακίνητα στο Χαρτοφυλάκιό μας",
-    "stat_awards": "Βραβεία & Διακρίσεις",
+    "stat_properties": "Ακίνητα που πουλήθηκαν",
+    "stat_awards": "Συνεργαζόμενοι συνεργάτες",
     "contact_page_title": "Επικοινωνία",
     "contact_info_title": "Στοιχεία Επικοινωνίας",
     "contact_info_desc": "Μη διστάσετε να επικοινωνήσετε μαζί μας για οποιαδήποτε πληροφορία. Είμαστε εδώ για να σας βοηθήσουμε.",
@@ -83,7 +83,6 @@
     "placeholder_name": "Ονοματεπώνυμο",
     "placeholder_subject": "Θέμα",
     "placeholder_message": "Το μήνυμά σας...",
-    "contact_send_btn": "Αποστολή Μηνύματος",
     "contact_map_title": "Η Τοποθεσία μας",
     "more_details_btn": "Περισσότερα",
     "property_description_title": "Περιγραφή",
@@ -150,6 +149,7 @@
 
     "card_bedrooms": "Υπνοδωμάτια",
     "card_bathrooms": "Μπάνια",
+    "prop_code_label": "Κωδικός",
     "prop_type_label": "Τύπος",
     "prop_area_label": "Εμβαδόν",
     "prop_bedrooms_label": "Υπνοδωμάτια",
@@ -189,8 +189,19 @@
     "footer_social_media_title": "Ακολουθήστε μας στα Social Media",
     "chatbot_welcome_message": "Γεια σας! Είμαι ο ψηφιακός βοηθός του <b> Group Real Estate</b>. Πώς μπορώ να σας εξυπηρετήσω σήμερα;",
     "make_a_review_btn": "Κάντε μας μια κριτική!",
-    "prop_location_title": "Η τοποθεσία του ακινήτου"
-
-
+    "prop_location_title": "Η τοποθεσία του ακινήτου",
+    "contact_widget_title": "Επικοινωνήστε μαζί μας",
+    "placeholder_phone": "Τηλέφωνο",
+    "contact_send_btn": "Στείλτε Μήνυμα",
+    "propose_price_btn": "Πρότεινε Τιμή",
+    "property_interest_message": "Με ενδιαφέρει το ακίνητο %id%.",
+    "propose_price_title": "Πρότεινε τη Δική σου Τιμή",
+    "propose_price_desc": "Κάνε μια προσφορά για αυτό το ακίνητο. Η προσφορά σας πρέπει να είναι εντός του 20% της αρχικής τιμής.",
+    "continue_btn": "Συνέχεια",
+    "original_price_label": "Αρχική Τιμή",
+    "propose_price_desc_15": "Κάνε μια προσφορά για αυτό το ακίνητο. Η προσφορά σας πρέπει να είναι εντός του 15% της αρχικής τιμής.",
+    "submit_offer_title": "Υποβάλετε την Προσφορά σας",
+    "submit_offer_btn": "Αποστολή Προσφοράς",
+    "before_after_title": "Οι κατασκευές",
+    "before_after_subtitle": "Δείτε τη διαφορά σε μια ποιοτική κατασκευή"
 }
-

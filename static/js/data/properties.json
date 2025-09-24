@@ -36,7 +36,7 @@
         ]
     },
     {
-        "id": "maisonette-vrasna-93",
+        "id": "the-twins",
         "lat": 40.695095867175,
         "lon": 23.690752526141,
         "title_key": "prop_title_vrasna_93",
@@ -47,7 +47,7 @@
         "price": 240000,
         "area": 93,
         "bedrooms": 4,
-        "bathrooms": 2,
+        "bathrooms": 3,
         "description_key": "prop_desc_vrasna_93",
         "features_keys": [
             "feature_private_garden",

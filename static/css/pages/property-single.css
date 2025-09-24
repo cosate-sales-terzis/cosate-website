@@ -76,3 +76,63 @@
     height: 100%;
     width: 100%;
 }
+
+/* css/pages/property-single.css */
+
+/* --- Contact Agent Widget Styles --- */
+.contact-agent-widget h4 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-agent-widget .form-group {
+    margin-bottom: 15px;
+}
+
+.contact-agent-widget input,
+.contact-agent-widget textarea,
+.contact-agent-widget select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+}
+
+/* Ειδικό στυλ για το γκρουπ του τηλεφώνου */
+.phone-group {
+    display: flex;
+    gap: 5px;
+}
+.country-code-select {
+    width: auto; /* Σταθερό πλάτος για το dropdown */
+    flex-shrink: 0;
+}
+.phone-group input {
+    width: 100%;
+}
+
+.contact-agent-widget textarea {
+    resize: vertical;
+}
+
+.form-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-buttons .btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+}
+.form-buttons .btn-secondary {
+    background-color: #d94040;
+}
+.form-buttons .btn-secondary:hover {
+    background-color: #63685a;
+}

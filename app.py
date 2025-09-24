@@ -1,11 +1,13 @@
 # app.py
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect
 import json
 import os # Προσθέτουμε το os για τις μεταβλητές περιβάλλοντος
 import google.generativeai as genai # Προσθέτουμε τη βιβλιοθήκη του Gemini
 import sqlite3
 from datetime import datetime 
-
+import smtplib
+import ssl
+from email.message import EmailMessage
 app = Flask(__name__)
 
 # --- Ρύθμιση του Gemini API ---
@@ -214,9 +216,113 @@ def contact_page():
 
         return render_template('contact.html') # Μπορούμε να επιστρέψουμε και μια σελίδα "Ευχαριστούμε"
 
-    # Αν η μέθοδος είναι GET, απλώς δείχνουμε τη σελίδα
     return render_template('contact.html')
 
+@app.route('/send_message', methods=['POST'])
+def send_message():
+    # Παίρνουμε τα δεδομένα από τη φόρμα
+    property_id = request.form['property_id']
+    property_title = request.form['property_title'] # Το προσθέσαμε στο HTML
+    name = request.form['name']
+    email = request.form['email']
+    phone = f"{request.form['country_code']} {request.form['phone']}"
+    message = request.form['message']
+
+    # --- ΛΟΓΙΚΗ ΑΠΟΣΤΟΛΗΣ EMAIL ---
+    sender_email = "stergios.terzis@hotmail.com"
+    sender_password = "makis2013"
+    receiver_email = sender_email # Στέλνουμε το email στον εαυτό μας
+
+    if not sender_email or not sender_password:
+        print("!!! MAIL_USERNAME or MAIL_PASSWORD not set in environment variables.")
+        return redirect(f'/property/{property_id}')
+
+    # Δημιουργία του email
+    subject = f"Νέο Μήνυμα Ενδιαφέροντος για το Ακίνητο: {property_title}"
+    body = f"""
+    Έχετε λάβει ένα νέο μήνυμα ενδιαφέροντος.
+
+    Στοιχεία Ακινήτου:
+    ID: {property_id}
+    Τίτλος: {property_title}
+
+    Στοιχεία Αποστολέα:
+    Όνομα: {name}
+    Email: {email}
+    Τηλέφωνο: {phone}
+
+    Μήνυμα:
+    {message}
+    """
+
+    em = EmailMessage()
+    em['From'] = sender_email
+    em['To'] = receiver_email
+    em['Subject'] = subject
+    em.set_content(body)
+
+    context = ssl.create_default_context()
+
+    try:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+            smtp.login(sender_email, sender_password)
+            smtp.sendmail(sender_email, receiver_email, em.as_string())
+        print("Email sent successfully!")
+    except Exception as e:
+        print(f"Error sending email: {e}")
+
+    return redirect(f'/property/{property_id}')
+
+@app.route('/propose_price', methods=['POST'])
+def propose_price():
+    # Παίρνουμε όλα τα δεδομένα από τη φόρμα του δεύτερου modal
+    property_id = request.form['property_id']
+    property_title = request.form['property_title']
+    proposed_price = request.form['proposed_price']
+    name = request.form['name']
+    email = request.form['email']
+    phone = request.form.get('phone_full', 'N/A') # Παίρνουμε τον πλήρη αριθμό
+
+    # Δημιουργούμε και στέλνουμε το email
+    sender_email = "stergios.terzis@gmail.com"
+    sender_password = "makis2013"
+    receiver_email = sender_email
+
+    if not sender_email or not sender_password:
+        print("!!! Mail credentials not set.")
+        return redirect(f'/property/{property_id}')
+
+    subject = f"ΝΕΑ ΠΡΟΤΑΣΗ ΤΙΜΗΣ για το ακίνητο: {property_title}"
+    body = f"""
+    Έχετε λάβει μια νέα πρόταση τιμής.
+
+    Στοιχεία Ακινήτου:
+    ID: {property_id}
+    Τίτλος: {property_title}
+
+    Προτεινόμενη Τιμή: €{proposed_price}
+
+    Στοιχεία Ενδιαφερόμενου:
+    Όνομα: {name}
+    Email: {email}
+    Τηλέφωνο: {phone}
+    """
+    em = EmailMessage()
+    em['From'] = sender_email
+    em['To'] = receiver_email
+    em['Subject'] = subject
+    em.set_content(body)
+
+    context = ssl.create_default_context()
+
+    try:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+            smtp.login(sender_email, sender_password)
+            smtp.sendmail(sender_email, receiver_email, em.as_string())
+        print("Email sent successfully!")
+    except Exception as e:
+        print(f"Error sending email: {e}")    
+    return redirect(f'/property/{property_id}') # Επιστροφή στη σελίδα του ακινήτου
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
