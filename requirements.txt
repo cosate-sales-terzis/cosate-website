@@ -1,5 +1,8 @@
 Flask
 gunicorn
 google-generativeai
+<<<<<<< HEAD
 SQLAlchemy
 psycopg2-binary
+=======
+>>>>>>> dc2955c48661127bcaaf4e96ba882179557b134f
