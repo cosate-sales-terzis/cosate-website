@@ -94,6 +94,32 @@
     color: var(--white);
 }
 
+
+.newsletter-form {
+    display: flex;
+    margin-top: 10px;
+}
+
+.newsletter-form input {
+    flex-grow: 1; /* Το input παίρνει όλο τον διαθέσιμο χώρο */
+    border: 1px solid #ddd;
+    border-right: none; /* Αφαιρούμε το δεξί border για να ενωθεί με το κουμπί */
+    padding: 12px;
+    border-radius: 8px 0 0 8px; /* Στρογγυλεμένες γωνίες μόνο αριστερά */
+    font-family: var(--font-family);
+    font-size: 1rem;
+    outline: none;
+    min-width: 0; /* Διόρθωση για flexbox bug */
+}
+
+/* Ο κανόνας για το κουμπί */
+.newsletter-form button {
+    flex-shrink: 0; /* Η ΟΡΙΣΤΙΚΗ ΔΙΟΡΘΩΣΗ: Αποτρέπει το κουμπί από το να "στριμωχτεί" */
+    border-radius: 0 8px 8px 0; /* Στρογγυλεμένες γωνίες μόνο δεξιά */
+    white-space: nowrap; /* Διασφαλίζει ότι το κείμενο μένει σε μία γραμμή */
+    padding: 0 20px;
+}
+
 /* ============================================= */
 /* ==          Footer (Mobile Styles)         == */
 /* ============================================= */
